@@ -1,0 +1,38 @@
+
+// Using the Sensor PIR for capture the moviments or objects.
+// When capture it, generate a sound (in buzzer).
+
+void setup(){
+  pinMode(8, INPUT);
+  // Configure the PIR
+  pinMode(9, OUTPUT);
+  // Configure the Buzzer
+  noTone(9);
+}
+
+void onBuzzer(){
+
+  tone(8, 1500);
+  delay(2000);
+  
+  offBuzzer();
+}
+
+void offBuzzer(){
+
+  noTone(8);
+}
+
+void loop(){
+
+  byte valueOfPIR = 0;
+  
+  valueOfPIR = digitalRead(8);
+  
+  if(valueOfPIR==1){
+    onBuzzer();
+  }
+  
+  // Ok, it is all, until soon.
+
+}

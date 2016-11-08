@@ -41,4 +41,6 @@ void loop(){
 		tempoAtual = millis();
 	}
 
+	tempoAnterior = tempoAtual;
+
 }

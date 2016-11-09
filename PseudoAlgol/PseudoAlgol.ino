@@ -76,10 +76,12 @@ void loop(){
   }
   else if(temperaturaAtual==temperaturaDesejada){
     randomSeed(analogRead(0));
-    temperaturaAtual = temperaturaAtual+(random(1)-random(1));
+    temperaturaAtual = temperaturaAtual+(random(3)-random(3));
   }
   else{
-    Serial.println("Refrigeração desligada!");
+    Serial.println("Ventilador desligado temporariamente!");
+    randomSeed(analogRead(0));
+    temperaturaAtual = temperaturaAtual+(random(3)-random(3));
   }
   
   while(tempoAtual-tempoAnterior<tempoMaximo){

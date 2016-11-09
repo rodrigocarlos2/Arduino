@@ -23,8 +23,9 @@ void loop(){
 
   unsigned long tempoAtual = millis();
 
-  if(temperaturaAtual==0)
+  if(temperaturaAtual==0){
     Serial.println("Digite o valor da Temperatura atual: ");
+  }
 
   while(temperaturaAtual==0){
   
@@ -36,8 +37,9 @@ void loop(){
 
   }
 
-  if(temperaturaDesejada==0)
+  if(temperaturaDesejada==0){
     Serial.println("Digite o valor da Temperatura desejada: ");
+  }
 
   while(temperaturaDesejada==0){
   
@@ -51,15 +53,15 @@ void loop(){
 
   if(temperaturaAtual>temperaturaDesejada){
 
-    if(temperaturaAtual-temperatuaDesejada>10){
+    if(temperaturaAtual-temperaturaDesejada>10){
       // Ventilador forte
       temperaturaAtual = temperaturaAtual-2;
     }
-    else if(temperaturaAtual-temperatuaDesejada>5){
+    else if(temperaturaAtual-temperaturaDesejada>5){
       // Ventilador forte
       temperaturaAtual = temperaturaAtual-2;
     }
-    else(temperaturaAtual-temperatuaDesejada>2){
+    else(temperaturaAtual-temperaturaDesejada>2){
       // Ventilador fraco
       temperaturaAtual = temperaturaAtual-1;
     }

@@ -58,7 +58,7 @@ void loop(){
       temperaturaAtual = temperaturaAtual-2;
     }
     else if(temperaturaAtual-temperaturaDesejada>5){
-      // Ventilador forte
+      // Ventilador medio
       temperaturaAtual = temperaturaAtual-2;
     }
     else(temperaturaAtual-temperaturaDesejada>2){
@@ -68,7 +68,7 @@ void loop(){
     
   }
   else if(temperaturaAtual==temperaturaDesejada){
-    temperaturaAtual = temperatura+(random(0, 1)-random(0, 1));
+    temperaturaAtual = temperaturaAtual+(random(0, 1)-random(0, 1));
   }
   else{
     Serial.println("Refrigeração desligada!");

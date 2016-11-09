@@ -23,14 +23,14 @@ void loop() {
 
   Serial.println("Digite o valor da Temperatura atual: ");
   if(Serial.available()){
-    temperaturaAtual = Serial.read();
+    temperaturaAtual = Serial.readString();
     Serial.print("Temperatura atual: ");
     Serial.println(temperaturaAtual);
   }
 
   Serial.println("Digite o valor da Temperatura desejada: ");
   if(Serial.available()){
-    temperaturaAtual = Serial.read();
+    temperaturaAtual = Serial.readString();
     Serial.print("Temperatura desejada: ");
     Serial.println(temperaturaDesejada);
   }

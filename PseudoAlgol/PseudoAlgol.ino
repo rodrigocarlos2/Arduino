@@ -60,15 +60,17 @@ void loop(){
       Serial.println("Vento forte >>> ");
       temperaturaAtual = temperaturaAtual-2;
     }
-    else if(temperaturaAtual-temperaturaDesejada>5){
-      // Ventilador médio
-      Serial.println("Vento médio ZZZ ");
-      temperaturaAtual = temperaturaAtual-2;
-    }
-    else(temperaturaAtual-temperaturaDesejada>2);{
-      // Ventilador fraco
-      Serial.println("Vento fraco ||| ");
-      temperaturaAtual = temperaturaAtual-1;
+    else{
+        if(temperaturaAtual-temperaturaDesejada>5){
+        // Ventilador médio
+        Serial.println("Vento médio ZZZ ");
+        temperaturaAtual = temperaturaAtual-2;
+        }
+        else{
+          // Ventilador fraco
+          Serial.println("Vento fraco ||| ");
+          temperaturaAtual = temperaturaAtual-1;
+        }
     }
     
   }

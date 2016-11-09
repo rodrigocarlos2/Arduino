@@ -63,7 +63,7 @@ void loop(){
     else{
         if(temperaturaAtual-temperaturaDesejada>5){
         // Ventilador médio
-        Serial.println("Vento médio ZZZ ");
+        Serial.println("Vento regular ZZZ ");
         temperaturaAtual = temperaturaAtual-2;
         }
         else{
@@ -75,7 +75,8 @@ void loop(){
     
   }
   else if(temperaturaAtual==temperaturaDesejada){
-    temperaturaAtual = temperaturaAtual+(random(0, 1)-random(0, 1));
+    randomSeed(analogRead(0));
+    temperaturaAtual = temperaturaAtual+(random(1)-random(1));
   }
   else{
     Serial.println("Refrigeração desligada!");

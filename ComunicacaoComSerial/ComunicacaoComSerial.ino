@@ -1,6 +1,7 @@
 
 // Author: Rodrigo Carlos
 // E-mail: rodrigo19962010@live.com
+// Pseudo-algoritmo 2016
 
 int temperaturaAtual;
 int temperaturaDesejada;
@@ -8,7 +9,8 @@ int temperaturaDesejada;
 unsigned long tempoAnterior = 0;
 unsigned long tempoMaximo = 1000;
 
-void setup() {
+
+void setup(){
 
   Serial.begin(9600);
 
@@ -17,7 +19,7 @@ void setup() {
 
 }
 
-void loop() {
+void loop(){
 
   unsigned long tempoAtual = millis();
 
@@ -45,6 +47,29 @@ void loop() {
         Serial.println(temperaturaDesejada);
       }
 
+  }
+
+  if(temperaturaAtual>temperaturaDesejada){
+
+    if(temperaturaAtual-temperatuaDesejada>10){
+      // Ventilador forte
+      temperaturaAtual = temperaturaAtual-2;
+    }
+    else if(temperaturaAtual-temperatuaDesejada>5){
+      // Ventilador forte
+      temperaturaAtual = temperaturaAtual-2;
+    }
+    else(temperaturaAtual-temperatuaDesejada>2){
+      // Ventilador fraco
+      temperaturaAtual = temperaturaAtual-1;
+    }
+    
+  }
+  else if(temperaturaAtual==temperaturaDesejada){
+    temperaturaAtual = temperatura+(random(0, 1)-random(0, 1));
+  }
+  else{
+    Serial.println("Refrigeração desligada!");
   }
   
   while(tempoAtual-tempoAnterior<tempoMaximo){

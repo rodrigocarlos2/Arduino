@@ -21,7 +21,8 @@ void loop() {
 
   unsigned long tempoAtual = millis();
 
-  Serial.println("Digite o valor da Temperatura atual: ");
+  if(temperaturaAtual==0)
+    Serial.println("Digite o valor da Temperatura atual: ");
 
   while(temperaturaAtual==0){
   
@@ -33,7 +34,8 @@ void loop() {
 
   }
 
-  Serial.println("Digite o valor da Temperatura desejada: ");
+  if(temperaturaDesejada==0)
+    Serial.println("Digite o valor da Temperatura desejada: ");
 
   while(temperaturaDesejada==0){
   

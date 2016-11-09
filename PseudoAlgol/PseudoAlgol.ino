@@ -3,12 +3,11 @@
 // E-mail: rodrigo19962010@live.com
 // Pseudo-algoritmo 2016
 
-int temperaturaAtual;
-int temperaturaDesejada;
+int temperaturaAtual = 0;
+int temperaturaDesejada = 0;
 
 unsigned long tempoAnterior = 0;
 unsigned long tempoMaximo = 1000;
-
 
 void setup(){
 
@@ -31,8 +30,7 @@ void loop(){
   
     if(Serial.available()){
       temperaturaAtual = Serial.readString().toInt();
-      Serial.print("Temperatura atual: ");
-      Serial.println(temperaturaAtual);
+      
     }
 
   }
@@ -42,27 +40,34 @@ void loop(){
   }
 
   while(temperaturaDesejada==0){
-  
+    
       if(Serial.available()){
-        temperaturaDesejada = Serial.readString().toInt();
-        Serial.print("Temperatura desejada: ");
-        Serial.println(temperaturaDesejada);
+        temperaturaDesejada = Serial.readString().toInt();      
       }
 
   }
+
+  Serial.print("Temperatura atual: ");
+  Serial.println(temperaturaAtual);
+
+  Serial.print("Temperatura desejada: ");
+  Serial.println(temperaturaDesejada);
 
   if(temperaturaAtual>temperaturaDesejada){
 
     if(temperaturaAtual-temperaturaDesejada>10){
       // Ventilador forte
+      Serial.println("Vento forte >>> ");
       temperaturaAtual = temperaturaAtual-2;
     }
     else if(temperaturaAtual-temperaturaDesejada>5){
-      // Ventilador medio
+      // Ventilador médio
+      Serial.println("Vento médio ZZZ ");
       temperaturaAtual = temperaturaAtual-2;
     }
     else(temperaturaAtual-temperaturaDesejada>2);{
       // Ventilador fraco
+      Serial.println("Vento fraco ||| ");
       temperaturaAtual = temperaturaAtual-1;
     }
     

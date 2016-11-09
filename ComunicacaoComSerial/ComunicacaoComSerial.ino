@@ -22,17 +22,27 @@ void loop() {
   unsigned long tempoAtual = millis();
 
   Serial.println("Digite o valor da Temperatura atual: ");
-  if(Serial.available()){
-    temperaturaAtual = Serial.readString();
-    Serial.print("Temperatura atual: ");
-    Serial.println(temperaturaAtual);
+
+  while(temperaturaAtual==0){
+  
+    if(Serial.available()){
+      temperaturaAtual = Serial.readString().toInt();
+      Serial.print("Temperatura atual: ");
+      Serial.println(temperaturaAtual);
+    }
+
   }
 
   Serial.println("Digite o valor da Temperatura desejada: ");
-  if(Serial.available()){
-    temperaturaAtual = Serial.readString();
-    Serial.print("Temperatura desejada: ");
-    Serial.println(temperaturaDesejada);
+
+  while(temperaturaDesejada==0){
+  
+      if(Serial.available()){
+        temperaturaDesejada = Serial.readString().toInt();
+        Serial.print("Temperatura desejada: ");
+        Serial.println(temperaturaDesejada);
+      }
+
   }
   
   while(tempoAtual-tempoAnterior<tempoMaximo){

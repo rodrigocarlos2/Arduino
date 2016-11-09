@@ -61,7 +61,7 @@ void loop(){
       // Ventilador medio
       temperaturaAtual = temperaturaAtual-2;
     }
-    else(temperaturaAtual-temperaturaDesejada>2){
+    else(temperaturaAtual-temperaturaDesejada>2);{
       // Ventilador fraco
       temperaturaAtual = temperaturaAtual-1;
     }

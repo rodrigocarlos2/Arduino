@@ -1,3 +1,4 @@
+
 //Programa : Sensor de umidade e temperatura DHT11
 //Autor : Arduino e Cia
 
@@ -24,5 +25,5 @@ void loop()
   Serial.println(" Celsius  ");
 
   //Não diminuir o valor abaixo. O ideal é a leitura a cada 2 segundos
-  delay(500);  
+  delay(2000);
 }

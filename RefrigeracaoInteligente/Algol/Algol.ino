@@ -19,10 +19,8 @@ ISR(WDT_vect){
 }
 
 void setup(){
-
   Serial.begin(9600);
   pinMode(portaDoRefrigerador, OUTPUT);
-
 }
 
 void loop(){

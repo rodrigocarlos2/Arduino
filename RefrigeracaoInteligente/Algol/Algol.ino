@@ -1,7 +1,7 @@
 
 // Author: Rodrigo Carlos
 // E-mail: rodrigo19962010@live.com
-// Refrigeração com gasto reduzido de energia
+// Tema: Refrigeração com gasto reduzido de energia
 
 #include <JeeLib.h>
 #include <dht.h>

@@ -43,28 +43,24 @@ void loop(){
 
   }
 
-  Serial.print("Temperatura atual: ");
+  Serial.print("Temperatura Atual: ");
   Serial.println(temperaturaAtual);
 
-  Serial.print("Temperatura desejada: ");
+  Serial.print("Temperatura Desejada: ");
   Serial.println(temperaturaDesejada);
 
   if(temperaturaAtual>temperaturaDesejada){
-
-    if(temperaturaAtual>=temperaturaDesejada){
+      
       // Ventilador forte
-      Serial.println("Vento forte >>> ");
+      Serial.println("Refrigerador ligado!");
       temperaturaAtual = temperaturaAtual-2;
       digitalWrite(portaDoRefrigerador, HIGH);
-    }
     
   }
   else{
-    // Aqui podemos economizar a energia elétrica
-    // Ligar conexão com bateria
-    Serial.println("Ventilador desligado temporariamente!");
-    // digitalWrite(portaDaBateira, HIGH);
-    digitalWrite(portaDoRefrigerador, LOW);
+      // ventilador desligado
+      Serial.println("Refrigerador desligado!");
+      digitalWrite(portaDoRefrigerador, LOW);
   }
 
   Sleepy::loseSomeTime(2000);

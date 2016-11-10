@@ -1,7 +1,7 @@
 
 // Author: Rodrigo Carlos
 // E-mail: rodrigo19962010@live.com
-// Pseudo-algoritmo do Sistema de Refrigeração 2016
+// Refrigeração com gasto reduzido de energia
 
 #include <JeeLib.h>
 #include <dht.h>

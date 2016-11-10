@@ -3,8 +3,8 @@
 // E-mail: rodrigo19962010@live.com
 // Pseudo-algoritmo 2016
 
-int temperaturaAtual = 0;
-int temperaturaDesejada = 0;
+long temperaturaAtual = 0;
+long temperaturaDesejada = 0;
 
 unsigned long tempoAnterior = 0;
 unsigned long tempoMaximo = 1000;
@@ -64,21 +64,24 @@ void loop(){
         if(temperaturaAtual-temperaturaDesejada>5){
         // Ventilador médio
         Serial.println("Vento regular ZZZ ");
-        temperaturaAtual = temperaturaAtual-2;
+        temperaturaAtual = temperaturaAtual-1.5;
         }
         else{
           // Ventilador fraco
           Serial.println("Vento fraco ||| ");
-          temperaturaAtual = temperaturaAtual-1;
+          temperaturaAtual = temperaturaAtual-0.5;
         }
     }
     
   }
   else if(temperaturaAtual==temperaturaDesejada){
+    // Ventilador fraco
     randomSeed(analogRead(0));
     temperaturaAtual = temperaturaAtual+(random(3)-random(3));
   }
   else{
+    // Aqui podemos economizar a energia elétrica
+    // Ligar conexão com bateria
     Serial.println("Ventilador desligado temporariamente!");
     randomSeed(analogRead(0));
     temperaturaAtual = temperaturaAtual+(random(3)-random(3));

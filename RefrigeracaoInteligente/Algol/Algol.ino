@@ -3,41 +3,28 @@
 // E-mail: rodrigo19962010@live.com
 // Pseudo-algoritmo do Sistema de Refrigeração 2016
 
-long temperaturaAtual = 0;
-long temperaturaDesejada = 0;
+#include <dht.h>
+#define dht_dpin A1 //Pino DATA do Sensor ligado na porta Analogica A1
 
-unsigned long tempoAnterior = 0;
-unsigned long tempoMaximo = 1000;
+dht DHT; //Inicializa o sensor
 
-//int portaDaBateria = 12; Definição da porta da Bateria
+unsigned long temperaturaAtual;
+unsigned long temperaturaDesejada;
+
+int portaDoRefrigerador = 12;
 
 void setup(){
 
   Serial.begin(9600);
-
-  temperaturaAtual = 0;
-  temperaturaDesejada = 0;
-
-  // pinMode(portaDaBateria, OUTPUT);
+  pinMode(portaDoRefrigerador, OUTPUT);
 
 }
 
 void loop(){
 
-  unsigned long tempoAtual = millis();
+  DHT.read11(dht_dpin); //Lê as informações do sensor
 
-  if(temperaturaAtual==0){
-    Serial.println("Digite o valor da Temperatura atual: ");
-  }
-
-  while(temperaturaAtual==0){
-  
-    if(Serial.available()){
-      temperaturaAtual = Serial.readString().toInt();
-      
-    }
-
-  }
+  temperaturaAtual = DHT.temperature;
 
   if(temperaturaDesejada==0){
     Serial.println("Digite o valor da Temperatura desejada: ");
@@ -59,49 +46,22 @@ void loop(){
 
   if(temperaturaAtual>temperaturaDesejada){
 
-    if(temperaturaAtual-temperaturaDesejada>10){
+    if(temperaturaAtual>=temperaturaDesejada){
       // Ventilador forte
       Serial.println("Vento forte >>> ");
       temperaturaAtual = temperaturaAtual-2;
-    }
-    else{
-        if(temperaturaAtual-temperaturaDesejada>5){
-        // Ventilador médio
-        Serial.println("Vento regular ZZZ ");
-        temperaturaAtual = temperaturaAtual-1.5;
-        }
-        else{
-          // Ventilador fraco
-          Serial.println("Vento fraco ||| ");
-          temperaturaAtual = temperaturaAtual-0.5;
-        }
+      digitalWrite(portaDoRefrigerador, HIGH);
     }
     
-  }
-  else if(temperaturaAtual==temperaturaDesejada){
-    // Ventilador fraco
-    randomSeed(analogRead(0));
-    temperaturaAtual = temperaturaAtual+(random(3)-random(3));
   }
   else{
     // Aqui podemos economizar a energia elétrica
     // Ligar conexão com bateria
     Serial.println("Ventilador desligado temporariamente!");
     // digitalWrite(portaDaBateira, HIGH);
-    randomSeed(analogRead(0));
-    temperaturaAtual = temperaturaAtual+(random(3)-random(3));
+    digitalWrite(portaDoRefrigerador, LOW);
   }
+
   
-  while(tempoAtual-tempoAnterior<tempoMaximo){
-    tempoAtual = millis();
-  }
-
-  tempoAnterior = tempoAtual;
-
-  /*// Desligando a carga energética repassada já que no próximo laço a energia pode ser usada para mantimento do projeto
-   * if(digitalRead(portaDaBateria)==HIGH){
-   *  digitalWrite(portaDaBateria, LOW);
-   * }
-   */
 
 }

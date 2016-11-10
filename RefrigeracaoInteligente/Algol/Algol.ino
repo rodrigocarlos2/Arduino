@@ -3,6 +3,7 @@
 // E-mail: rodrigo19962010@live.com
 // Pseudo-algoritmo do Sistema de Refrigeração 2016
 
+#include <JeeLib.h>
 #include <dht.h>
 #define dht_dpin A1 //Pino DATA do Sensor ligado na porta Analogica A1
 
@@ -12,6 +13,10 @@ unsigned long temperaturaAtual;
 unsigned long temperaturaDesejada;
 
 int portaDoRefrigerador = 12;
+
+ISR(WDT_vect){
+  Sleepy::watchdogEvent();
+}
 
 void setup(){
 
@@ -62,6 +67,6 @@ void loop(){
     digitalWrite(portaDoRefrigerador, LOW);
   }
 
-  
+  Sleepy::loseSomeTime(2000);
 
 }

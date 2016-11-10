@@ -1,7 +1,7 @@
 
 // Author: Rodrigo Carlos
 // E-mail: rodrigo19962010@live.com
-// Pseudo-algoritmo 2016
+// Pseudo-algoritmo do Sistema de Refrigeração 2016
 
 long temperaturaAtual = 0;
 long temperaturaDesejada = 0;
@@ -9,12 +9,16 @@ long temperaturaDesejada = 0;
 unsigned long tempoAnterior = 0;
 unsigned long tempoMaximo = 1000;
 
+int portaDaBateria = 12;
+
 void setup(){
 
   Serial.begin(9600);
 
   temperaturaAtual = 0;
   temperaturaDesejada = 0;
+
+  // pinMode(portaDaBateria, OUTPUT);
 
 }
 
@@ -83,6 +87,7 @@ void loop(){
     // Aqui podemos economizar a energia elétrica
     // Ligar conexão com bateria
     Serial.println("Ventilador desligado temporariamente!");
+    // digitalWrite(portaDaBateira, HIGH);
     randomSeed(analogRead(0));
     temperaturaAtual = temperaturaAtual+(random(3)-random(3));
   }
@@ -92,5 +97,11 @@ void loop(){
   }
 
   tempoAnterior = tempoAtual;
+
+  /*// Desligando a carga energética repassada já que no próximo laço a energia pode ser usada para mantimento do projeto
+   * if(digitalRead(portaDaBateria)==HIGH){
+   *  digitalWrite(portaDaBateria, LOW);
+   * }
+   */
 
 }

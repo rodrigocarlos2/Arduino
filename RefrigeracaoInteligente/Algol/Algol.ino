@@ -14,13 +14,14 @@ unsigned long temperaturaDesejada;
 
 int portaDoRefrigerador = 12;
 
-ISR(WDT_vect){
+/*ISR(WDT_vect){
   Sleepy::watchdogEvent();
-}
+}*/
 
 void setup(){
   Serial.begin(9600);
   pinMode(portaDoRefrigerador, OUTPUT);
+  temperaturaDesejada = 0;
 }
 
 void loop(){
@@ -61,6 +62,7 @@ void loop(){
       digitalWrite(portaDoRefrigerador, LOW);
   }
 
-  Sleepy::loseSomeTime(2000);
+  Sleepy::loseSomeTime(5000);
+  //delay(2000);
 
 }

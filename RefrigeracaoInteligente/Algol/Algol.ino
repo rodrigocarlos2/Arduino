@@ -72,7 +72,7 @@ void loop(){
       digitalWrite(portaDoRefrigerador, LOW);
   }
 
-  //Sleepy::powerDown();
+  Sleepy::powerDown();
   Sleepy::loseSomeTime(1000);
 
 }

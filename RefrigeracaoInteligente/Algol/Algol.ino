@@ -1,3 +1,4 @@
+
 // Author: Rodrigo Carlos
 // E-mail: rodrigo19962010@live.com
 // Tema: Refrigeração com gasto reduzido de energia
@@ -13,8 +14,6 @@ unsigned long temperaturaDesejada;
 
 int portaDoRefrigerador = 12;
 
-int portaDe5 = 10;
-
 ISR(WDT_vect){
   Sleepy::watchdogEvent();
 }
@@ -22,13 +21,10 @@ ISR(WDT_vect){
 void setup(){
   Serial.begin(9600);
   pinMode(portaDoRefrigerador, OUTPUT);
-  pinMode(portaDe5, OUTPUT);
   temperaturaDesejada = 0;
 }
 
 void loop(){
-
-  digitalWrite(portaDe5, HIGH);
   
   if(temperaturaDesejada==0){
     Serial.println("Digite o valor da Temperatura desejada: ");
@@ -59,16 +55,16 @@ void loop(){
   if(temperaturaAtual>temperaturaDesejada){
       // Ventilador forte
       Serial.println("Refrigerador ligado!");
+      delay(100);
       temperaturaAtual = temperaturaAtual-2;
       digitalWrite(portaDoRefrigerador, HIGH);
     
   }
   else{
       Serial.println("Refrigerador desligado!");
+      delay(100);
       digitalWrite(portaDoRefrigerador, LOW);
   }
-
-  digitalWrite(portaDe5, LOW);
 
   Sleepy::loseSomeTime(1000);
 

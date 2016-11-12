@@ -6,6 +6,7 @@
 #include <JeeLib.h>
 #include <dht.h>
 #include <Ports.h>
+#include "LowPower.h"
 #define dht_dpin A1 //Pino DATA do Sensor ligado na porta Analogica A1
 
 dht DHT; //Inicializa o sensor
@@ -70,6 +71,7 @@ void loop(){
       Serial.println("Refrigerador desligado!");
       delay(100);
       digitalWrite(portaDoRefrigerador, LOW);
+      LowPower.powerDown(SLEEP_2S, ADC_OFF, BOD_OFF);
   }
   
   Sleepy::loseSomeTime(1000);

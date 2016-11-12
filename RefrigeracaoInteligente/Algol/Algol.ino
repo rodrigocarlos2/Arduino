@@ -6,8 +6,6 @@
 #include <JeeLib.h>
 #include <dht.h>
 #include <Ports.h>
-#include <PinChangeInt.h>
-#include <PinChangeIntConfig.h>
 #define dht_dpin A1 //Pino DATA do Sensor ligado na porta Analogica A1
 
 dht DHT; //Inicializa o sensor
@@ -72,7 +70,7 @@ void loop(){
       digitalWrite(portaDoRefrigerador, LOW);
   }
 
-  Sleepy::powerDown();
+  //Sleepy::powerDown();
   Sleepy::loseSomeTime(1000);
 
 }

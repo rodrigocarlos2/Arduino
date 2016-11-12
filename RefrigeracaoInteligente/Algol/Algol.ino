@@ -4,9 +4,6 @@
 // Tema: Refrigeração com gasto reduzido de energia
 
 #include <JeeLib.h>
-#include <dht.h>
-#include <Ports.h>
-#include <LowPower.h>
 #define dht_dpin A1 //Pino DATA do Sensor ligado na porta Analogica A1
 
 dht DHT; //Inicializa o sensor
@@ -14,7 +11,7 @@ dht DHT; //Inicializa o sensor
 unsigned long temperaturaAtual;
 unsigned long temperaturaDesejada;
 
-int portaDoRefrigerador = 12;
+int portaDoRefrigerador = A2;
 
 ISR(WDT_vect){
   Sleepy::watchdogEvent();
@@ -62,7 +59,7 @@ void loop(){
       Serial.println("Refrigerador ligado!");
       delay(100);
       temperaturaAtual = temperaturaAtual-2;
-      digitalWrite(portaDoRefrigerador, HIGH);
+      analogWrite(portaDoRefrigerador, HIGH);
     
   }
   else{
@@ -70,8 +67,7 @@ void loop(){
       // Ventilador desligado
       Serial.println("Refrigerador desligado!");
       delay(100);
-      digitalWrite(portaDoRefrigerador, LOW);
-      LowPower.powerDown(SLEEP_2S, ADC_OFF, BOD_OFF);
+      analogWrite(portaDoRefrigerador, LOW);
   }
   
   Sleepy::loseSomeTime(1000);

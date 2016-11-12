@@ -6,7 +6,7 @@
 #include <JeeLib.h>
 #include <dht.h>
 #include <Ports.h>
-#include "LowPower.h"
+#include <LowPower.h>
 #define dht_dpin A1 //Pino DATA do Sensor ligado na porta Analogica A1
 
 dht DHT; //Inicializa o sensor

@@ -53,6 +53,7 @@ void loop(){
   delay(100);
 
   if(temperaturaAtual>temperaturaDesejada){
+    
       // Ventilador forte
       Serial.println("Refrigerador ligado!");
       delay(100);
@@ -61,6 +62,8 @@ void loop(){
     
   }
   else{
+
+      // Ventilador desligado
       Serial.println("Refrigerador desligado!");
       delay(100);
       digitalWrite(portaDoRefrigerador, LOW);

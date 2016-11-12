@@ -4,6 +4,7 @@
 // Tema: Refrigeração com gasto reduzido de energia
 
 #include <JeeLib.h>
+#include <avr/power.h>  
 #include <dht.h>
 #define dht_dpin A1 //Pino DATA do Sensor ligado na porta Analogica A1
 
@@ -14,9 +15,9 @@ unsigned long temperaturaDesejada;
 
 int portaDoRefrigerador = 12;
 
-/*ISR(WDT_vect){
+ISR(WDT_vect){
   Sleepy::watchdogEvent();
-}*/
+}
 
 void setup(){
   Serial.begin(9600);
@@ -45,8 +46,12 @@ void loop(){
   Serial.print("Temperatura Atual: ");
   Serial.println(temperaturaAtual);
 
+  delay(100);
+
   Serial.print("Temperatura Desejada: ");
   Serial.println(temperaturaDesejada);
+
+  delay(100);
 
   if(temperaturaAtual>temperaturaDesejada){
       

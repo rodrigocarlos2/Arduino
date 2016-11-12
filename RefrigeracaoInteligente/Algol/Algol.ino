@@ -71,8 +71,7 @@ void loop(){
       delay(100);
       digitalWrite(portaDoRefrigerador, LOW);
   }
-
-  Sleepy::powerDown();
+  
   Sleepy::loseSomeTime(1000);
 
 }

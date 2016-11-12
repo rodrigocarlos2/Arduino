@@ -31,8 +31,6 @@ void loop(){
   DHT.read11(dht_dpin); //Lê as informações do sensor
 
   temperaturaAtual = DHT.temperature;
-
-  temperaturaDesejada = 23;
   
   if(temperaturaDesejada==0){
     Serial.println("Digite o valor da Temperatura desejada: ");
@@ -74,6 +72,5 @@ void loop(){
   }
 
   Sleepy::loseSomeTime(2000);
-  //delay(1000);
 
 }

@@ -27,6 +27,8 @@ void setup(){
 }
 
 void loop(){
+
+  digitalWrite(portaDe5, HIGH);
   
   if(temperaturaDesejada==0){
     Serial.println("Digite o valor da Temperatura desejada: ");
@@ -39,8 +41,6 @@ void loop(){
       }
 
   }
-
-  digitalWrite(portaDe5, HIGH);
 
   DHT.read11(dht_dpin); //Lê as informações do sensor
 

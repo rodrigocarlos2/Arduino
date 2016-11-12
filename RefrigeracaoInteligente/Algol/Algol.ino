@@ -26,6 +26,12 @@ void setup(){
 }
 
 void loop(){
+
+  temperaturaAtual = 0;
+
+  DHT.read11(dht_dpin); //Lê as informações do sensor
+
+  temperaturaAtual = DHT.temperature;
   
   if(temperaturaDesejada==0){
     Serial.println("Digite o valor da Temperatura desejada: ");
@@ -38,10 +44,6 @@ void loop(){
       }
 
   }
-
-  DHT.read11(dht_dpin); //Lê as informações do sensor
-
-  temperaturaAtual = DHT.temperature;
 
   Serial.print("Temperatura Atual: ");
   Serial.println(temperaturaAtual);

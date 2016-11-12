@@ -4,7 +4,8 @@
 // Tema: Refrigeração com gasto reduzido de energia
 
 #include <JeeLib.h>
-#include <avr/power.h>  
+#include <avr/sleep.h>
+#include <avr/power.h>
 #include <dht.h>
 #define dht_dpin A1 //Pino DATA do Sensor ligado na porta Analogica A1
 
@@ -16,7 +17,7 @@ unsigned long temperaturaDesejada;
 int portaDoRefrigerador = 12;
 
 ISR(WDT_vect){
-  Sleepy::watchdogEvent();
+  delay(1000);
 }
 
 void setup(){
@@ -57,17 +58,29 @@ void loop(){
       
       // Ventilador forte
       Serial.println("Refrigerador ligado!");
+
+      delay(100);
+      
       temperaturaAtual = temperaturaAtual-2;
       digitalWrite(portaDoRefrigerador, HIGH);
     
   }
   else{
-      // ventilador desligado
-      Serial.println("Refrigerador desligado!");
-      digitalWrite(portaDoRefrigerador, LOW);
-  }
 
-  Sleepy::loseSomeTime(5000);
-  //delay(2000);
+      Serial.println("Refrigerador desligado");
+
+      delay(100);
+
+      set_sleep_mode(SLEEP_MODE_PWR_SAVE);   /* EDIT: could also use SLEEP_MODE_PWR_DOWN for lowest power consumption. */
+      
+      sleep_enable();
+      
+      sleep_mode();
+
+      sleep_disable();
+      
+      power_all_enable();
+      
+  }
 
 }

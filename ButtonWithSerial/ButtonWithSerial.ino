@@ -1,6 +1,8 @@
 
 // Author: Rodrigo
 
+// Resistor: 2k
+
 button = 12;
 
 void setup(){

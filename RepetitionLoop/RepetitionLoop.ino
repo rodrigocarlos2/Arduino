@@ -10,7 +10,7 @@ void setup(){
 
 void loop(){
 
-  byte var;
+  int var;
   // Variáveis do tipo byte variam entre 0 e 255.
 
   var = 0;

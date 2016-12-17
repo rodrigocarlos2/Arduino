@@ -1,0 +1,33 @@
+
+float temperatura;
+
+int buzzer = 12;
+ 
+void setup(){
+  
+	Serial.begin(9600);
+  	pinMode(buzzer, OUTPUT);
+  
+}
+ 
+
+void loop(){
+  
+  int frequencia = 440; // frequência que simula a nota LÁ
+  
+  temperatura = (float(analogRead(A0))*5/(1023))/0.01;
+  
+  Serial.print("Temperatura: ");
+  Serial.println(temperatura);
+  
+  if(temperatura>=30){
+    Serial.println("Está muito quente!");
+    tone(12, frequencia);
+  }
+  else{
+    noTone(12);
+  }
+  
+  delay(2000);
+  
+}

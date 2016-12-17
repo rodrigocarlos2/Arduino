@@ -1,15 +1,16 @@
 
 int pot = A2;
+int buz = 8;
 
 void setup(){
   Serial.begin(9600);
   pinMode(pot, INPUT);
-  pinMode(8, OUTPUT);
+  pinMode(buz, OUTPUT);
 }
 
 void loop(){
   int numPot = analogRead(pot);
   Serial.println(numPot);
-  tone(8, numPot);
+  tone(buz, numPot);
   delay(100);
 }

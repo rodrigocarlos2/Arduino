@@ -1,0 +1,28 @@
+
+// Author: Rodrigo Carlos
+
+// 8 é o pino de ativação do buzzer
+
+void setup(){
+  Serial.begin(9600);
+  pinMode(8, OUTPUT);
+}
+
+void loop(){
+  
+  String receive;
+  
+  if(Serial.available()>0){
+    receive = Serial.readString();
+    Serial.println(receive);
+    delay(50);
+    
+    if(receive=="ON"){
+      tone(8, 440); // 440 é a frequência de tonicidade do buzzer
+    }
+    else if(receive=="OFF"){
+      noTone(8);
+    }
+  }
+  
+}

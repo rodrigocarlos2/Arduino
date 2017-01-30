@@ -11,6 +11,6 @@ void setup(){
 void loop(){
   int numPot = analogRead(pot);
   Serial.println(numPot);
-  tone(buz, numPot);
-  delay(100);
+  tone(buz, numPot, 10);
+  delay(1);
 }
